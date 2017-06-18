@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   len_of_tab.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/05 19:01:22 by tfaure            #+#    #+#             */
-/*   Updated: 2016/11/14 21:30:19 by tfaure           ###   ########.fr       */
+/*   Created: 2017/04/18 09:36:15 by bbeldame          #+#    #+#             */
+/*   Updated: 2017/05/01 21:16:19 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strcmp(const char *s1, const char *s2)
+int			len_of_tab(char **tab)
 {
-	while (*s1 || *s2)
-	{
-		if (*s1 < *s2)
-			return ((unsigned char)*s1 - (unsigned char)*s2);
-		if (*s1 > *s2)
-			return ((unsigned char)*s1 - (unsigned char)*s2);
-		s1++;
-		s2++;
-	}
-	return (0);
+	int i;
+
+	i = 0;
+	while (tab[i])
+		i++;
+	return (i);
 }

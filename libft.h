@@ -3,18 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/05 16:05:35 by tfaure            #+#    #+#             */
-/*   Updated: 2016/11/14 22:10:04 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/04/23 20:48:49 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include "unistd.h"
-# include "stdlib.h"
-# include "string.h"
+
+# include <unistd.h>
+# include <stdlib.h>
+# include <limits.h>
+# include <string.h>
+# include <stdint.h>
+
+# define BUFF_SIZE 2017
+# define NBMAXFD 42
 
 typedef struct		s_list
 {
@@ -33,7 +39,7 @@ char				*ft_strcpy(char *dst, const char *src);
 char				*ft_strncpy(char *dst, const char *src, size_t len);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
-int					ft_atoi(const char *str);
+intmax_t			ft_atoi(const char *str);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);
@@ -55,6 +61,7 @@ void				ft_bzero(void *s, size_t n);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void				*ft_memmove(void *dst, const void *src, size_t len);
+void				*ft_realloc(void *ptr, size_t size);
 void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 char				*ft_strcat(char *s1, const char *s2);
@@ -83,7 +90,15 @@ char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
 int					ft_min(int x, int y);
 int					ft_max(int x, int y);
-void				ft_strrev(char *s);
+char				*ft_strrev(char *str);
 char				*ft_strtolower(char *s);
 char				*ft_strtoupper(char *s);
+int					get_next_line(const int fd, char **line);
+float				ft_map(float x, float length, float min, float max);
+void				*semalloc(size_t size);
+void				err_found(char *str);
+void				free_splited_str(char **str);
+int					len_of_tab(char **tab);
+double				ft_atof(const char *str);
+
 #endif

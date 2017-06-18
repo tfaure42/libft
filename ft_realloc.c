@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/05 19:01:22 by tfaure            #+#    #+#             */
-/*   Updated: 2016/11/14 21:30:19 by tfaure           ###   ########.fr       */
+/*   Created: 2016/11/30 17:08:34 by tfaure            #+#    #+#             */
+/*   Updated: 2016/11/30 18:39:01 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strcmp(const char *s1, const char *s2)
+void	*ft_realloc(void *ptr, size_t size)
 {
-	while (*s1 || *s2)
+	char *new;
+
+	if (ptr == NULL)
+		return (NULL);
+	if (!size && ptr != NULL)
 	{
-		if (*s1 < *s2)
-			return ((unsigned char)*s1 - (unsigned char)*s2);
-		if (*s1 > *s2)
-			return ((unsigned char)*s1 - (unsigned char)*s2);
-		s1++;
-		s2++;
+		if ((new = (char *)malloc(1)) == NULL)
+			return (NULL);
+		free(ptr);
+		return (new);
 	}
-	return (0);
+	if ((new = (char *)malloc(size)) == NULL)
+		return (NULL);
+	if (ptr != NULL)
+	{
+		ft_memcpy(new, ptr, size);
+		free(ptr);
+	}
+	return (new);
 }

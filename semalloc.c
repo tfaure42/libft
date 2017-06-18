@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   semalloc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/05 19:01:22 by tfaure            #+#    #+#             */
-/*   Updated: 2016/11/14 21:30:19 by tfaure           ###   ########.fr       */
+/*   Created: 2017/04/09 16:31:59 by bbeldame          #+#    #+#             */
+/*   Updated: 2017/04/09 20:14:42 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strcmp(const char *s1, const char *s2)
+void		*semalloc(size_t size)
 {
-	while (*s1 || *s2)
-	{
-		if (*s1 < *s2)
-			return ((unsigned char)*s1 - (unsigned char)*s2);
-		if (*s1 > *s2)
-			return ((unsigned char)*s1 - (unsigned char)*s2);
-		s1++;
-		s2++;
-	}
-	return (0);
+	void *new;
+
+	if (!(new = malloc(size)))
+		err_found("malloc failed");
+	return (new);
 }
